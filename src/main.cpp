@@ -16,17 +16,42 @@ FeatherJoyWing joy(ss);
 template <class T>
 T println(T str);
 
+
+void joystickCallback(int8_t x, int8_t y) {
+    println(x);
+}
+
+void buttonCallback(FJBUTTON* buttons, uint8_t count) {
+    // for(int i = 0; i < count; i++)
+    // {
+    //     Serial.print(buttons[i].pinId);
+    //     Serial.print(": ");
+    //     Serial.print(buttons[i].pressed);
+    //     Serial.print(" - ");
+    //     Serial.print(buttons[i].hasChanged);
+    //     Serial.print(" | ");
+    // }
+
+    // Serial.println("");
+}
+
+
 void setup() {
-    Serial.begin(115200);
+    // Serial.begin(115200);
+    // while (!Serial);
 	display->begin(SSD1306_SWITCHCAPVCC, 0x3C);
 	display->setTextSize(1);
 	display->setTextColor(WHITE);
     joy.begin();
+    joy.registerJoystickCallback(joystickCallback);
+    joy.registerButtonCallback(buttonCallback);
 }
+
+auto i = 0;
 
 void loop() {
     joy.update();
-    delay(1000);
+    delay(100);
 }
 
 
