@@ -31,8 +31,8 @@ bool FeatherJoyWing::begin(uint32_t irq_pin, uint8_t joywing_address)
     this->ss.pinModeBulk(FeatherJoyWing_Button_Mask, INPUT_PULLUP);
 
     this->ss.setGPIOInterrupts(FeatherJoyWing_Button_Mask, true);
-    
-    pinMode(irq_pin, INPUT);
+
+    // pinMode(irq_pin, INPUT);
 
     return true;
 }
@@ -62,7 +62,7 @@ bool FeatherJoyWing::update()
             y = 0;
         }
 
-        if ((abs(x - last_x) > this->joystick_react_threshold)  
+        if ((abs(x - last_x) > this->joystick_react_threshold)
             ||  (abs(y - last_y) > this->joystick_react_threshold))
         {
             this->joystickCallback(x, y);
@@ -78,7 +78,7 @@ bool FeatherJoyWing::update()
         if(!digitalRead(FEATHERJOYWING_IRQ_PIN))
         {
             uint32_t buttons_state = this->ss.digitalReadBulk(FeatherJoyWing_Button_Mask);
-            
+
             for(int i = 0; i < FJ_NUM_OF_BUTTONS; i++)
             {
                 bool new_state = false;
@@ -103,7 +103,7 @@ bool FeatherJoyWing::update()
 
                 this->buttons[i].pressed = new_state;
             }
-            
+
             this->buttonCallback(this->buttons, FJ_NUM_OF_BUTTONS);
         }
     }
