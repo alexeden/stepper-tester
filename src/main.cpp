@@ -9,57 +9,54 @@
 Adafruit_SSD1306 *display = new Adafruit_SSD1306(128, 32, &Wire);
 Adafruit_seesaw ss;
 FeatherJoyWing joy(ss);
+String display_line_1 = "";
+String display_line_2 = "";
 
 /**
  * Declarations
  */
-template <class T>
-T println(T str);
-
+void update_display();
 
 void joystickCallback(int8_t x, int8_t y) {
-    println(x);
+    display_line_1 = String(x) + ", " + String(y);
 }
 
 void buttonCallback(FJBUTTON* buttons, uint8_t count) {
-    // for(int i = 0; i < count; i++)
-    // {
-    //     Serial.print(buttons[i].pinId);
-    //     Serial.print(": ");
-    //     Serial.print(buttons[i].pressed);
-    //     Serial.print(" - ");
-    //     Serial.print(buttons[i].hasChanged);
-    //     Serial.print(" | ");
-    // }
+    display_line_2 = "";
 
-    // Serial.println("");
+    for(int i = 0; i < count; i++) {
+        if (buttons[i].pressed) {
+            display_line_2 += (String(buttons[i].pinId) + " ");
+        }
+    }
+
+    if (display_line_2 == "") {
+        display_line_2 = "No buttons pressed";
+    }
 }
 
 
 void setup() {
-    // Serial.begin(115200);
-    // while (!Serial);
 	display->begin(SSD1306_SWITCHCAPVCC, 0x3C);
 	display->setTextSize(1);
 	display->setTextColor(WHITE);
+    display->invertDisplay(true);
     joy.begin();
     joy.registerJoystickCallback(joystickCallback);
     joy.registerButtonCallback(buttonCallback);
 }
 
-auto i = 0;
-
 void loop() {
     joy.update();
-    delay(100);
+    update_display();
+    // delay(10);
 }
 
-
-template <class T>
-T println(T value) {
+void update_display() {
 	display->clearDisplay();
-	display->setCursor(0, 0);
-	display->println(value);
-	display->display();
-	return value;
+    display->setCursor(5, 5);
+    display->println(display_line_1);
+    display->setCursor(5, display->height() / 2 + 5);
+    display->println(display_line_2);
+    display->display();
 }
