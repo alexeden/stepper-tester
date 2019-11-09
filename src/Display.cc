@@ -20,13 +20,14 @@ class Display {
 		display->invertDisplay(true);
 	}
 
-	void update() {
+	Display& update() {
 		display->clearDisplay();
 		display->setCursor(5, 5);
 		display->println(line1);
 		display->setCursor(5, display->height() / 2 + 5);
 		display->println(line2);
 		display->display();
+        return *this;
 	}
 
 	Display& clearln1() {
