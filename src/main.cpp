@@ -8,10 +8,14 @@
 #define STEPPER_EN_PIN A12
 #define STEPPER_PUL_PIN A11
 #define STEPPER_DIR_PIN A10
+#define STEPPER_CAL_SPEED 15000
+#define STEPPER_CAL_TIMEOUT 30000
+#define STEPPER_CAL_RANGEOUT 200000
+#define STEPPER_MAX_SPEED 200000
 
-AccelStepper stepper              = AccelStepper(AccelStepper::DRIVER, STEPPER_PUL_PIN, STEPPER_DIR_PIN);
-Controls controls				  = Controls();
-Display display					  = Display();
+AccelStepper stepper    = AccelStepper(AccelStepper::DRIVER, STEPPER_PUL_PIN, STEPPER_DIR_PIN);
+Controls controls	    = Controls();
+Display display		    = Display();
 
 /**
  * Declarations
@@ -20,6 +24,9 @@ void joystick_callback(int8_t x, int8_t y);
 void button_callback(FJBUTTON* buttons, uint8_t count);
 
 void setup() {
+    pinMode(STEPPER_EN_PIN, OUTPUT);
+    pinMode(STEPPER_PUL_PIN, OUTPUT);
+    pinMode(STEPPER_DIR_PIN, OUTPUT);
 	display.begin();
 	controls.begin().register_button_callback(button_callback).register_joystick_callback(joystick_callback);
 }
