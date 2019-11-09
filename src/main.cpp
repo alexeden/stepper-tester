@@ -5,6 +5,11 @@
 #include <SPI.h>
 #include <Wire.h>
 
+#define STEPPER_EN_PIN A12
+#define STEPPER_PUL_PIN A11
+#define STEPPER_DIR_PIN A10
+
+AccelStepper stepper              = AccelStepper(AccelStepper::DRIVER, STEPPER_PUL_PIN, STEPPER_DIR_PIN);
 Controls controls				  = Controls();
 Display display					  = Display();
 
