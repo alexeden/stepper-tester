@@ -1,56 +1,79 @@
-#include <Adafruit_GFX.h>
+#include "Controls.cc"
+#include "Display.cc"
 #include <Adafruit_MotorShield.h>
 #include <Arduino.h>
 #include <SPI.h>
 #include <Streaming.h>
-#include "Adafruit_seesaw.h"
-#include "FeatherJoyWing.h"
-#include "Display.cc"
 
 Adafruit_MotorShield motor_shield = Adafruit_MotorShield();
-Adafruit_StepperMotor *stepper = motor_shield.getStepper(200, 2);
-Display display = Display();
-Adafruit_seesaw ss;
-FeatherJoyWing joy(ss);
-String display_line_1 = "";
-String display_line_2 = "";
+Adafruit_StepperMotor* stepper	  = motor_shield.getStepper(200, 2);
+Controls controls				  = Controls();
+Display display					  = Display();
 
 /**
  * Declarations
  */
-void update_display();
-
-void joystick_callback(int8_t x, int8_t y) {
-    display
-        .clearln1()
-        .println1(x)
-        .println1(", ")
-        .println1(y);
-}
-
-void button_callback(FJBUTTON* buttons, uint8_t count) {
-    // display_line_2 = "";
-
-    // for(int i = 0; i < count; i++) {
-    //     if (buttons[i].pressed) {
-    //         display_line_2 += (String(buttons[i].pinId) + " ");
-    //     }
-    // }
-
-    // if (display_line_2 == "") {
-    //     display_line_2 = "No buttons pressed";
-    // }
-}
-
+void joystick_callback(int8_t x, int8_t y);
+void button_callback(FJBUTTON* buttons, uint8_t count);
 
 void setup() {
-    display.begin();
-    joy.begin();
-    joy.registerJoystickCallback(joystick_callback);
-    joy.registerButtonCallback(button_callback);
+	display.begin();
+	controls.begin().register_button_callback(button_callback).register_joystick_callback(joystick_callback);
 }
 
 void loop() {
-    joy.update();
-    display.update();
+	controls.update();
+	display.update();
+}
+
+void left_button_pressed() {
+}
+
+void right_button_pressed() {
+}
+
+void up_button_pressed() {
+}
+
+void down_button_pressed() {
+}
+
+void select_button_pressed() {
+}
+
+void joystick_callback(int8_t x, int8_t y) {
+	display.clearln1().println1(x).println1(", ").println1(y);
+}
+
+void button_callback(FJBUTTON* buttons, uint8_t count) {
+	// display.clearln2();
+	// display_line_2 = "";
+
+	for (int i = 0; i < count; i++) {
+		if (buttons[i].hasChanged && buttons[i].pressed) {
+			switch (buttons[i].pinId) {
+				case BUTTON_RIGHT:
+					right_button_pressed();
+					break;
+				case BUTTON_DOWN:
+					down_button_pressed();
+					break;
+				case BUTTON_LEFT:
+					left_button_pressed();
+					break;
+				case BUTTON_UP:
+					up_button_pressed();
+					break;
+				case BUTTON_SEL:
+					select_button_pressed();
+					break;
+			}
+			// display.println2(buttons[i].pinId);
+			// display.println2(" ");
+		}
+	}
+
+	// if (count < 1) {
+	//     display.println2("No buttons pressed");
+	// }
 }

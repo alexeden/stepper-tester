@@ -1,6 +1,7 @@
 #ifndef __DISPLAY__
 #define __DISPLAY__
 
+#include <Adafruit_GFX.h>
 #include <Adafruit_SSD1306.h>
 #include <Arduino.h>
 
