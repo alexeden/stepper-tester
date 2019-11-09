@@ -27,6 +27,7 @@ void setup() {
     pinMode(STEPPER_EN_PIN, OUTPUT);
     pinMode(STEPPER_PUL_PIN, OUTPUT);
     pinMode(STEPPER_DIR_PIN, OUTPUT);
+    stepper.setMaxSpeed(STEPPER_MAX_SPEED);
 	display.begin();
 	controls.begin().register_button_callback(button_callback).register_joystick_callback(joystick_callback);
 }
