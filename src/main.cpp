@@ -4,6 +4,7 @@
 #include <Arduino.h>
 #include <SPI.h>
 #include <Wire.h>
+#include "Streaming.h"
 
 #define STEPPER_EN_PIN A12
 #define STEPPER_PUL_PIN A11
@@ -14,9 +15,19 @@
 #define STEPPER_MAX_SPEED 200000
 
 AccelStepper stepper    = AccelStepper(AccelStepper::DRIVER, STEPPER_PUL_PIN, STEPPER_DIR_PIN);
-float stepper_accel     = 1.0;
+float stepper_accel     = 1;
 Controls controls	    = Controls();
 Display display		    = Display();
+
+void disableStepper() {
+	digitalWrite(STEPPER_EN_PIN, LOW);
+}
+void enableStepper() {
+	digitalWrite(STEPPER_EN_PIN, HIGH);
+}
+void toggleStepper() {
+    digitalWrite(STEPPER_EN_PIN, !digitalRead(STEPPER_EN_PIN));
+}
 
 /**
  * Declarations
@@ -25,6 +36,7 @@ void joystick_callback(int8_t x, int8_t y);
 void button_callback(FJBUTTON* buttons, uint8_t count);
 
 void setup() {
+    Serial.begin(115200);
     pinMode(STEPPER_EN_PIN, OUTPUT);
     pinMode(STEPPER_PUL_PIN, OUTPUT);
     pinMode(STEPPER_DIR_PIN, OUTPUT);
@@ -42,21 +54,24 @@ void loop() {
     display
         .invert(stepper.isRunning())
         .clear()
+        .println1("Curr ")
+        .println1(stepper.currentPosition())
+        .println1(", Targ ")
         .println1(stepper.targetPosition())
-        .println1(", ")
-        .println1(stepper.distanceToGo())
-        .println1(" to go")
         .println2(stepper.speed())
         .println2(" s/s ")
         .println2(stepper_accel)
         .println2(" s/s/s ")
+        .println3(digitalRead(STEPPER_EN_PIN) ? "Enabled" : "Disabled")
         .update();
 }
 
 void left_button_pressed() {
+    stepper.move(-20000);
 }
 
 void right_button_pressed() {
+    stepper.move(20000);
 }
 
 void up_button_pressed() {
@@ -72,12 +87,15 @@ void down_button_pressed() {
 }
 
 void select_button_pressed() {
+    toggleStepper();
 }
 
 void joystick_callback(int8_t x, int8_t y) {
+
     // Assume zero if within range of -5 and 5
     x = x < -5 || x > 5 ? x : 0;
-    stepper.setSpeed(static_cast<float>(x));
+    float speed = x;
+    stepper.setSpeed(speed);
 }
 
 void button_callback(FJBUTTON* buttons, uint8_t count) {
