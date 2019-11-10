@@ -35,7 +35,14 @@ void setup() {
 
 void loop() {
 	controls.update();
-	display.update();
+    stepper.run();
+
+    display
+        .invert(stepper.isRunning())
+        .clearln1()
+        .println1(stepper.distanceToGo())
+        .println1(" to go")
+        .update();
 }
 
 void left_button_pressed() {

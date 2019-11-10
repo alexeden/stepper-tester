@@ -17,8 +17,12 @@ class Display {
 		display->begin(SSD1306_SWITCHCAPVCC, 0x3C);
 		display->setTextSize(1);
 		display->setTextColor(WHITE);
-		display->invertDisplay(true);
 	}
+
+	Display& invert(bool invert) {
+		display->invertDisplay(invert);
+        return *this;
+    }
 
 	Display& update() {
 		display->clearDisplay();
