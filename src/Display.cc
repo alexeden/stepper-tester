@@ -9,7 +9,8 @@ class Display {
   public:
 	Display()
 	  : line1("")
-	  , line2("") {
+	  , line2("")
+	  , line3("") {
 		display = new Adafruit_SSD1306(128, 32, &Wire);
 	}
 
@@ -26,13 +27,22 @@ class Display {
 
 	Display& update() {
 		display->clearDisplay();
-		display->setCursor(5, 5);
+		display->setCursor(0, 0);
 		display->println(line1);
-		display->setCursor(5, display->height() / 2 + 5);
+		display->setCursor(0, display->height() / 3);
 		display->println(line2);
+		display->setCursor(0, 2 * display->height() / 3);
+		display->println(line3);
 		display->display();
         return *this;
 	}
+
+	Display& clear() {
+        clearln1();
+        clearln2();
+        clearln3();
+        return *this;
+    }
 
 	Display& clearln1() {
 		line1 = "";
@@ -56,9 +66,21 @@ class Display {
 		return *this;
 	}
 
+	Display& clearln3() {
+		line3 = "";
+		return *this;
+	}
+
+	template<class T>
+	Display& println3(T line) {
+		line3 += String(line);
+		return *this;
+	}
+
   private:
 	String line1;
 	String line2;
+	String line3;
 
 	Adafruit_SSD1306* display;
 };
