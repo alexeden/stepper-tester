@@ -1,24 +1,26 @@
+//
+// !!! WARNING !!! AUTO-GENERATED FILE!
+// PLEASE DO NOT MODIFY IT AND USE "platformio.ini":
+// https://docs.platformio.org/page/projectconf/section_env_build.html#build-flags
+//
 {
     "configurations": [
         {
-            "name": "!!! WARNING !!! AUTO-GENERATED FILE, PLEASE DO NOT MODIFY IT AND USE https://docs.platformio.org/page/projectconf/section_env_build.html#build-flags"
-        },
-        {
-            "name": "Mac",
-            "macFrameworkPath": [],
+            "name": "PlatformIO",
             "includePath": [
                 "/Users/alexeden/code/stepper-tester/include",
                 "/Users/alexeden/code/stepper-tester/src",
                 "/Users/alexeden/code/stepper-tester/lib/FeatherJoyWing/src",
-                "/Users/alexeden/code/stepper-tester/.pio/libdeps/featheresp32/Streaming_ID560",
-                "/Users/alexeden/code/stepper-tester/.pio/libdeps/featheresp32/Adafruit seesaw Library_ID1890",
-                "/Users/alexeden/.platformio/lib/Adafruit SSD1306_ID135",
-                "/Users/alexeden/code/stepper-tester/.pio/libdeps/featheresp32/Adafruit Motor Shield V2 Library_ID783",
-                "/Users/alexeden/code/stepper-tester/.pio/libdeps/featheresp32/Adafruit Motor Shield V2 Library_ID783/utility",
-                "/Users/alexeden/.platformio/packages/framework-arduinoespressif32/libraries/Wire/src",
-                "/Users/alexeden/code/stepper-tester/.pio/libdeps/featheresp32/Adafruit GFX Library_ID13",
+                "/Users/alexeden/code/stepper-tester/.pio/libdeps/featheresp32/Streaming",
+                "/Users/alexeden/code/stepper-tester/.pio/libdeps/featheresp32/Adafruit SSD1306",
+                "/Users/alexeden/code/stepper-tester/.pio/libdeps/featheresp32/Adafruit seesaw Library",
+                "/Users/alexeden/code/stepper-tester/.pio/libdeps/featheresp32/Adafruit Motor Shield V2 Library",
+                "/Users/alexeden/code/stepper-tester/.pio/libdeps/featheresp32/Adafruit Motor Shield V2 Library/utility",
+                "/Users/alexeden/code/stepper-tester/.pio/libdeps/featheresp32/Adafruit GFX Library",
+                "/Users/alexeden/code/stepper-tester/.pio/libdeps/featheresp32/Adafruit BusIO",
                 "/Users/alexeden/.platformio/packages/framework-arduinoespressif32/libraries/SPI/src",
-                "/Users/alexeden/code/stepper-tester/.pio/libdeps/featheresp32/AccelStepper_ID265/src",
+                "/Users/alexeden/.platformio/packages/framework-arduinoespressif32/libraries/Wire/src",
+                "/Users/alexeden/code/stepper-tester/.pio/libdeps/featheresp32/AccelStepper/src",
                 "/Users/alexeden/.platformio/packages/framework-arduinoespressif32/tools/sdk/include/config",
                 "/Users/alexeden/.platformio/packages/framework-arduinoespressif32/tools/sdk/include/app_trace",
                 "/Users/alexeden/.platformio/packages/framework-arduinoespressif32/tools/sdk/include/app_update",
@@ -77,6 +79,12 @@
                 "/Users/alexeden/.platformio/packages/framework-arduinoespressif32/tools/sdk/include/fb_gfx",
                 "/Users/alexeden/.platformio/packages/framework-arduinoespressif32/cores/esp32",
                 "/Users/alexeden/.platformio/packages/framework-arduinoespressif32/variants/feather_esp32",
+                "/Users/alexeden/code/stepper-tester/.pio/libdeps/featheresp32/Adafruit ILI9341",
+                "/Users/alexeden/code/stepper-tester/.pio/libdeps/featheresp32/Adafruit ST7735 and ST7789 Library",
+                "/Users/alexeden/code/stepper-tester/.pio/libdeps/featheresp32/Adafruit STMPE610",
+                "/Users/alexeden/code/stepper-tester/.pio/libdeps/featheresp32/Adafruit TouchScreen",
+                "/Users/alexeden/code/stepper-tester/.pio/libdeps/featheresp32/SD",
+                "/Users/alexeden/code/stepper-tester/.pio/libdeps/featheresp32/Servo/src",
                 "/Users/alexeden/.platformio/packages/framework-arduinoespressif32/libraries/ArduinoOTA/src",
                 "/Users/alexeden/.platformio/packages/framework-arduinoespressif32/libraries/AsyncUDP/src",
                 "/Users/alexeden/.platformio/packages/framework-arduinoespressif32/libraries/AzureIoT/src",
@@ -110,15 +118,16 @@
                     "/Users/alexeden/code/stepper-tester/include",
                     "/Users/alexeden/code/stepper-tester/src",
                     "/Users/alexeden/code/stepper-tester/lib/FeatherJoyWing/src",
-                    "/Users/alexeden/code/stepper-tester/.pio/libdeps/featheresp32/Streaming_ID560",
-                    "/Users/alexeden/code/stepper-tester/.pio/libdeps/featheresp32/Adafruit seesaw Library_ID1890",
-                    "/Users/alexeden/.platformio/lib/Adafruit SSD1306_ID135",
-                    "/Users/alexeden/code/stepper-tester/.pio/libdeps/featheresp32/Adafruit Motor Shield V2 Library_ID783",
-                    "/Users/alexeden/code/stepper-tester/.pio/libdeps/featheresp32/Adafruit Motor Shield V2 Library_ID783/utility",
-                    "/Users/alexeden/.platformio/packages/framework-arduinoespressif32/libraries/Wire/src",
-                    "/Users/alexeden/code/stepper-tester/.pio/libdeps/featheresp32/Adafruit GFX Library_ID13",
+                    "/Users/alexeden/code/stepper-tester/.pio/libdeps/featheresp32/Streaming",
+                    "/Users/alexeden/code/stepper-tester/.pio/libdeps/featheresp32/Adafruit SSD1306",
+                    "/Users/alexeden/code/stepper-tester/.pio/libdeps/featheresp32/Adafruit seesaw Library",
+                    "/Users/alexeden/code/stepper-tester/.pio/libdeps/featheresp32/Adafruit Motor Shield V2 Library",
+                    "/Users/alexeden/code/stepper-tester/.pio/libdeps/featheresp32/Adafruit Motor Shield V2 Library/utility",
+                    "/Users/alexeden/code/stepper-tester/.pio/libdeps/featheresp32/Adafruit GFX Library",
+                    "/Users/alexeden/code/stepper-tester/.pio/libdeps/featheresp32/Adafruit BusIO",
                     "/Users/alexeden/.platformio/packages/framework-arduinoespressif32/libraries/SPI/src",
-                    "/Users/alexeden/code/stepper-tester/.pio/libdeps/featheresp32/AccelStepper_ID265/src",
+                    "/Users/alexeden/.platformio/packages/framework-arduinoespressif32/libraries/Wire/src",
+                    "/Users/alexeden/code/stepper-tester/.pio/libdeps/featheresp32/AccelStepper/src",
                     "/Users/alexeden/.platformio/packages/framework-arduinoespressif32/tools/sdk/include/config",
                     "/Users/alexeden/.platformio/packages/framework-arduinoespressif32/tools/sdk/include/app_trace",
                     "/Users/alexeden/.platformio/packages/framework-arduinoespressif32/tools/sdk/include/app_update",
@@ -177,6 +186,12 @@
                     "/Users/alexeden/.platformio/packages/framework-arduinoespressif32/tools/sdk/include/fb_gfx",
                     "/Users/alexeden/.platformio/packages/framework-arduinoespressif32/cores/esp32",
                     "/Users/alexeden/.platformio/packages/framework-arduinoespressif32/variants/feather_esp32",
+                    "/Users/alexeden/code/stepper-tester/.pio/libdeps/featheresp32/Adafruit ILI9341",
+                    "/Users/alexeden/code/stepper-tester/.pio/libdeps/featheresp32/Adafruit ST7735 and ST7789 Library",
+                    "/Users/alexeden/code/stepper-tester/.pio/libdeps/featheresp32/Adafruit STMPE610",
+                    "/Users/alexeden/code/stepper-tester/.pio/libdeps/featheresp32/Adafruit TouchScreen",
+                    "/Users/alexeden/code/stepper-tester/.pio/libdeps/featheresp32/SD",
+                    "/Users/alexeden/code/stepper-tester/.pio/libdeps/featheresp32/Servo/src",
                     "/Users/alexeden/.platformio/packages/framework-arduinoespressif32/libraries/ArduinoOTA/src",
                     "/Users/alexeden/.platformio/packages/framework-arduinoespressif32/libraries/AsyncUDP/src",
                     "/Users/alexeden/.platformio/packages/framework-arduinoespressif32/libraries/AzureIoT/src",
@@ -206,7 +221,7 @@
                 ]
             },
             "defines": [
-                "PLATFORMIO=40100",
+                "PLATFORMIO=50004",
                 "ARDUINO_FEATHER_ESP32",
                 "ESP32",
                 "ESP_PLATFORM",
@@ -219,10 +234,13 @@
                 "ARDUINO_BOARD=\"Adafruit ESP32 Feather\"",
                 ""
             ],
-            "intelliSenseMode": "clang-x64",
             "cStandard": "c99",
             "cppStandard": "c++11",
-            "compilerPath": "\"/Users/alexeden/.platformio/packages/toolchain-xtensa32/bin/xtensa-esp32-elf-gcc\" -mlongcalls"
+            "compilerPath": "/Users/alexeden/.platformio/packages/toolchain-xtensa32/bin/xtensa-esp32-elf-gcc",
+            "compilerArgs": [
+                "-mlongcalls",
+                ""
+            ]
         }
     ],
     "version": 4
